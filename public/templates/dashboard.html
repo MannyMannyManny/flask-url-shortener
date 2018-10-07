@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+
+{% block content %}
+{% if session['logged_in'] %}
+{% include "navbar.html" %}
+<main role="main" class="container">
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+<form class="form-inline content row cool-urls jumbotron" method="POST" action="/saveurl">
+    <div class="col-md-5 col-sm-4">
+    <label for="slug">Короткая ссылка</label>
+    <input type="text" class="form-control" id="slug" name="slug" placeholder="qe21">
+    </div>
+    
+    <div class="col-md-5 col-sm-4">
+    <label for="url">Полная ссылка</label>
+    <input type="text" class="form-control" id="url" name="url" placeholder="https://unio.online/collections/smart-collection/products/ark-raven">
+    </div>
+    
+    <div class="col-md-2 col-sm-4">
+        <label for="save">Сохранение</label>
+        <button type="submit" class="btn btn-primary" id="save">Сохранить</button>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Укороченная ссылка</th>
+        <th>Настоящая ссылка</th>
+        <th>Удалить ссылку</th>
+    </tr>
+{% for link in links %}
+  <tr>
+    <td>{{link._id}}</td>
+    <td>{{link.slug}}</td>
+    <td>{{link.url}}</td>
+    <td><a href="/delete?slug={{link.slug}}" class="btn btn-danger">Удалить</a></td>
+  </tr>
+{% endfor %}
+</table>
+</main>
+{% endif %}
+{% endblock %}

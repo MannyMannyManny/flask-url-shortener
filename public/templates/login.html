@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+
+{% block content %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+<div class="container">
+<div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form action="/login" method="POST">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+        </div><!-- /card-container -->
+        </div>
+{% endif %}
+{% endblock %}
