@@ -4,8 +4,8 @@ import os, base64, hashlib, re
 
 application = Flask(__name__, static_url_path='', static_folder='public/static', template_folder='public/templates')
 application.config["MONGODB_SETTINGS"] = {'DB': "links"}
-application.config["PROTECTION"] = "terramag"
-application.secret_key = "c8276c054c39335b287012d43a2f252c"
+application.config["PROTECTION"] = "password"
+application.secret_key = "secretkey"
 
 db = MongoEngine(application)
 
