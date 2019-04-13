@@ -9,33 +9,33 @@
     {% endif %}
 <form class="form-inline content row cool-urls jumbotron" method="POST" action="/saveurl">
     <div class="col-md-5 col-sm-4">
-    <label for="slug">Короткая ссылка</label>
+    <label for="slug">Short url</label>
     <input type="text" class="form-control" id="slug" name="slug" placeholder="qe21">
     </div>
     
     <div class="col-md-5 col-sm-4">
-    <label for="url">Полная ссылка</label>
-    <input type="text" class="form-control" id="url" name="url" placeholder="https://unio.online/collections/smart-collection/products/ark-raven">
+    <label for="url">Full url</label>
+    <input type="text" class="form-control" id="url" name="url" placeholder="https://google.com">
     </div>
     
     <div class="col-md-2 col-sm-4">
-        <label for="save">Сохранение</label>
-        <button type="submit" class="btn btn-primary" id="save">Сохранить</button>
+        <label for="save">Save</label>
+        <button type="submit" class="btn btn-primary" id="save">Save</button>
     </div>
 </form>
 <table class="table">
     <tr>
         <th>ID</th>
-        <th>Укороченная ссылка</th>
-        <th>Настоящая ссылка</th>
-        <th>Удалить ссылку</th>
+        <th>Short url</th>
+        <th>Real url</th>
+        <th>Delete</th>
     </tr>
 {% for link in links %}
   <tr>
     <td>{{link._id}}</td>
     <td>{{link.slug}}</td>
     <td>{{link.url}}</td>
-    <td><a href="/delete?slug={{link.slug}}" class="btn btn-danger">Удалить</a></td>
+    <td><a href="/delete?slug={{link.slug}}" class="btn btn-danger">Delete</a></td>
   </tr>
 {% endfor %}
 </table>
